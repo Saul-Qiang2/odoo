@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!--explicit list view definition -->
+
+    <record model="ir.ui.view" id="tree_bp_autocode_module">
+      <field name="name">模块列表</field>
+      <field name="type">tree</field>
+      <field name="model">bp_autocode.module</field>
+
+      <field name="arch" type="xml">
+        <tree>
+          <field name="module_c_name"/>
+          <field name="module_e_name"/>
+          <field name="module_model_1"/>
+
+          <field name="rely_module"/>
+
+          <!--<field name="value"/>-->
+          <!--<field name="value2"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <record id="tree_rely_module" model="ir.ui.view">
+        <field name="name">依赖模块列表</field>
+        <field name="type">tree</field>
+        <field name="model">bp_autocode.module.rely.module</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rely_module_cname" string="模块中文名称"/>
+                <field name="rely_module_ename" string="模块英文名称"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="form_bp_autocode_module">
+      <field name="name">模块</field>
+      <field name="type">form</field>
+      <field name="model">bp_autocode.module</field>
+
+      <field name="arch" type="xml">
+        <form>
+          <header>
+             <button name="create_code" string="生成代码" type="object" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group name="group_top" string="模块详情页">
+              <field name="module_c_name"/>
+              <field name="module_e_name"/>
+              <field name="module_model_1"/>
+
+              <field name="raw_inherit_model" >
+                            <tree editable="bottom">
+                                <field name="addel_field_id"/>
+                                <field name="ref_raw_field_name"/>
+                                <field name="ref_position_type"/>
+                                <!--<field name="ref_raw_hidden_field_name"/>-->
+                                <!--<field name="hidden_raw_field"/>-->
+                            </tree>
+                        </field>
+              <field name="rely_module" widget="many2many_checkboxes"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_bp_autocode_module" model="ir.actions.act_window">
+      <field name="name">模块</field>
+      <field name="res_model">bp_autocode.module</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form,tree</field>
+      <field name="view_id" ref="tree_bp_autocode_module"/>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="代码生成器" id="menu_bp_autocode_root" web_icon="static/description/icon.png"/>
+
+    <!-- menu categories -->
+    <menuitem name="模块" id="menu_bp_autocode_module" sequence="1" parent="menu_bp_autocode_root" action="action_bp_autocode_module"/>
+
+  </data>
+</odoo>

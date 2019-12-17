@@ -1,0 +1,12 @@
+/*主菜单条底色*/
+#oe_main_menu_navbar { background-color: #2B98E2 !important; }
+
+/*主菜单切换背景色*/
+a.oe_menu_toggler { background-color: transparent !important; }
+
+/*主菜单字体及颜色*/
+.navbar-inverse .navbar-nav > li > a {
+    color: #FFF;
+    font-family: "微软雅黑";
+    font-weight: bold;
+}

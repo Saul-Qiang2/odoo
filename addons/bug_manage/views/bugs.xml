@@ -1,0 +1,86 @@
+<odoo>
+  <data>
+      <!--XML按照顺序解释-->
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="bug_manage.list">
+      <field name="name">bug 列表</field>
+      <field name="model">bm.bug</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="is_closed"/>
+          <field name="user_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="bug_manage.form">
+      <field name="name">bug 表单</field>
+      <field name="model">bm.bug</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+              <button name="do_close" type="object" string="关闭 bug"/>
+          </header>
+          <sheet>
+              <!--设定分成两列-->
+              <group name="group_top" col="2">
+                  <group name="group_left">
+                      <field name="name"/>
+                      <field name="user_id"/>
+                      <field name="is_closed"/>
+                  </group>
+                  <group name="group_right">
+                      <field name="close_reason"/>
+                      <field name="follower_id"/>
+                  </group>
+              </group>
+              <notebook>
+                  <page string="详细内容">
+                      <field name="detail"/>
+                  </page>
+              </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit search view definition -->
+    <record model="ir.ui.view" id="bug_manage.search">
+      <field name="name">bug 搜索</field>
+      <field name="model">bm.bug</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="is_closed"/>
+          <field name="user_id"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+      <!--model标示：窗口动作，使用record新增自己定义的窗口动作记录。id属性唯一-->
+    <record model="ir.actions.act_window" id="bug_manage.action_window">
+      <field name="name">bug_manage window</field>
+        <!--视图取数的模型-->
+      <field name="res_model">bm.bug</field>
+        <!--按顺序展示的视图类型-->
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+      <!--menuitem可用于定义一个ir.ui.menu-->
+    <menuitem name="bug 管理系统" id="bug_manage.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="bug 管 理" id="bug_manage.menu_1" parent="bug_manage.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="bug 列表" id="bug_manage.menu_1_list" parent="bug_manage.menu_1"
+              action="bug_manage.action_window"/>
+
+  </data>
+</odoo>

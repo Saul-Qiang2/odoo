@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+book {
+    background-color: #0D3349;
+}
+
+.background_color1 {
+    background-color: #0D3349;
+    height: -webkit-fill-available;
+}
+
+div {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.block {
+    float: left;
+    width: 32%;
+    height: 270px;
+    margin: 1% 0% 0% 1%;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.block:hover {
+    border: 1px solid #777;
+}
+
+@media only screen and (max-width: 700px){
+    .block {
+        width: 48.5%;
+        height: 65%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .block {
+        width: 98%;
+        height: 100%;
+    }
+}

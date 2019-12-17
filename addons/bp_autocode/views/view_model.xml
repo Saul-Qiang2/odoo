@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tree_bp_autocode_model" model="ir.ui.view">
+        <field name="name">bp_autocode.model.tree</field>
+        <field name="model">bp_autocode.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="model_e_name"/>
+                <field name="model_description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_bp_autocode_model" model="ir.ui.view">
+        <field name="name">bp_autocode.model.form</field>
+        <field name="model">bp_autocode.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="model_e_name" placeholder="表名中不允许出现大写字母，数字，Python关键字,应一律按照小写字母命名，单词之间可以加英文句号"/>
+                        <field name="model_class_name" placeholder="按照小写字母命名，单词之间加下划线 "/>
+                        <field name="model_description" placeholder="对所建模型的简单描述"/>
+                        <field name="is_graph"/>
+                        <!--<field name="show_button"/>-->
+                        <field name="model_button" widget="many2many_tags"/>
+                        <field name="is_status" />
+                        <field name="show_progress_bar" attrs = "{'invisible':[('is_status','=', False)]}">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <!--<field name="progressbar_id" />-->
+                                <field name="selection_key"/>
+                                <field name="selection_value"/>
+                                <field name="progressbar_show"/>
+                            </tree>
+                        </field>
+                        <field name="is_screening" />
+                        <field name="show_filter" attrs = "{'invisible':[('is_screening','=', False)]}">
+                            <tree editable="bottom">
+                                <field name="filter_name" />
+                                <field name="filter_regex" />
+                                <field name="filter_fields" />
+                                <field name="fields_content" placeholder="('字段英文名', '表达式', '过滤内容')"/>
+                                <field name="filter_method_name" />
+                            </tree>
+                        </field>
+                        <field name="model_fieldlines">
+                            <tree editable="bottom">
+                                <field name="sequence" widget='handle'/>
+                                <field name="fields_name"/>
+                                <field name="fields_e_name"/>
+                                <field name="fields_type"/>
+                                <field name="fields_related_model"/>
+                                <field name="fields_one_2_many"/>
+                                <field name="fields_selection"/>
+                                <field name="is_filter"/>
+                                <field name="is_group"/>
+                                <field name="is_required"/>
+                                <field name="is_readonly"/>
+                                <field name="is_show_form"/>
+                                <field name="is_show_tree"/>
+                                <field name="tracking_info"/>
+                                <field name="beizhu" attrs = "{'invisible':[('fields_type','not in', ('group', 'page'))]}"/>
+                                <field name="is_show_field_tree" attrs = "{'invisible':[('fields_type','!=', 'One2many')]}"/>
+                            </tree>
+                        </field>
+                        <field name="model_relatebox" />
+                        <!--<field name="is_upload_file"/>-->
+                        <!--<field name="raw_model_table"/>-->
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="form_create_model_button">
+        <field name="name">创建按钮页面</field>
+        <field name="type">form</field>
+        <field name="model">bp_autocode.model.button</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="button_name" />
+                        <field name="button_method_name" />
+                    </group>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="form_create_model_relatedbox">
+        <field name="name">创建关联框页面</field>
+        <field name="type">form</field>
+        <field name="model">bp_autocode.model.relatedbox</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="related_field" />
+                            <field name="related_method_button" />
+                        </group>
+                        <group>
+                            <field name="notice_help"/>
+                        </group>
+                    </group>
+               </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="action_bp_autocode_model" model="ir.actions.act_window">
+         <field name="name">模型</field>
+         <field name="res_model">bp_autocode.model</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">form,tree</field>
+         <field name="view_id" ref="tree_bp_autocode_model"/>
+    </record>
+
+    <menuitem id="menu_bp_autocode_root" name="代码生成器"  web_icon="static/description/icon.png" />
+    <menuitem id="menu_bp_autocode_model"   name="模型" parent="menu_bp_autocode_root" sequence="13" action="action_bp_autocode_model"/>
+
+</odoo>

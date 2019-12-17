@@ -1,0 +1,20 @@
+<templates>
+
+    <t t-name="supplier_index_template">
+        <article>
+<title>xml中显示html代码</title>
+<content>
+    <![CDATA[]]>
+ </content>
+</article>
+        <!--<iframe marginheight="0" marginwidth="0" width="100%" height="910" src="bp_eam_supplier/static/html/supplier_web_template.html" frameborder="0" allowfullscreen="True"></iframe>-->
+<div class="background_color1">
+    <div class="block" id="chart1"></div>
+    <div class="block" id="chart2"></div>
+    <div class="block" id="chart3"></div>
+    <div class="block" id="chart4"></div>
+    <div class="block" id="chart5"></div>
+    <div class="block" id="chart6"></div>
+    </div>
+    </t>
+</templates>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 定义form表单视图 -->
+     <record id="form_bp_autocode_adddel_field" model="ir.ui.view">
+        <field name="name">bp_autocode.addel.field.form</field>
+        <field name="type">form</field>
+        <field name="model">bp_autocode.addel.field</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="inh_class_name" placeholder="按照小写字母命名，单词之间加下划线 "/>
+                            <field name="raw_table_model" />
+                            <field name="auto_field_name"  widget="many2many_tags" attrs = "{'invisible':['|',('expr_type','!=', 'field'), ('position_type','=', 'replace')], 'required':[('expr_type','=','field')]}"/>
+                            <field name="button_field" attrs = "{'invisible':[('expr_type','!=', 'button')], 'required':[('expr_type','=','button')]}"/>
+                            <field name="button_new_filed" attrs = "{'invisible':[('expr_type','!=', 'button')], 'required':[('expr_type','=','button')]}" widget="many2many_tags"/>
+                            <field name="position_type"/>
+                        </group>
+                        <group>
+                            <field name="raw_field_name" attrs = "{'invisible':['|',('expr_type','=', 'button'),('position_type','=', 'replace')], 'required':[('expr_type','=','field')]}"/>
+                            <field name="raw_view_id"/>
+                            <field name="record_view_id" placeholder="ID必须唯一标识"/>
+                            <field name="expr_type" />
+                            <field name="raw_hidden_field_name" widget="many2many_tags" attrs="{'invisible':[('position_type', '!=', 'replace')]}" />
+                            <!--<field name="choose_module" widget="radio" />-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+     </record>
+
+     <!-- 定义tree列表视图 -->
+    <record id="tree_bp_autocode_addel_field" model="ir.ui.view">
+        <field name="name">bp_autocode.addel.field.tree</field>
+        <field name="type">tree</field>
+        <field name="model">bp_autocode.addel.field</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="inh_class_name" string="继承模型类名"/>
+                <field name="raw_table_model" string="原生模型"/>
+                <field name="auto_field_name" string="添加的字段"/>
+                <field name="raw_view_id" string="继承的目标视图"/>
+                <field name="position_type" string="Position类型"/>
+            </tree>
+        </field>
+    </record>
+    <!-- 定义筛选器 -->
+
+    <!-- 定义视图动作 -->
+     <record id="action_bp_autocode_addel_field" model="ir.actions.act_window">
+        <field name="name">继承原生模型</field>
+        <field name="res_model">bp_autocode.addel.field</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form,tree</field>
+         <field name="view_id" ref="tree_bp_autocode_addel_field"/>
+    </record>
+    <!-- 触发tree视图动作 -->
+    <record model="ir.actions.act_window.view" id="autocode_addel_field_tree_action">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="tree_bp_autocode_addel_field"/>
+            <field name="sequence">1</field>
+            <field name="act_window_id" ref="action_bp_autocode_addel_field"/>
+    </record>
+    <!-- 触发form视图动作 -->
+    <record model="ir.actions.act_window.view" id="autocode_adddel_field_form_action">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="form_bp_autocode_adddel_field"/>
+            <field name="sequence">2</field>
+            <field name="act_window_id" ref="action_bp_autocode_addel_field"/>
+    </record>
+
+    <!-- 定义菜单-->
+    <menuitem id="menu_bp_autocode_root" name="代码生成器"  web_icon="static/description/icon.png" />
+    <menuitem id="menu_bp_autocode_addel_field"   name="继承" parent="menu_bp_autocode_root" sequence="14" action="action_bp_autocode_addel_field"/>
+
+</odoo>

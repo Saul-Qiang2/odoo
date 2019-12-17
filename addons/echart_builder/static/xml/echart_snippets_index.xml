@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!--定义动作， tag指到js的core.action_registry-->
+        <record id="action_echart_snippets" model="ir.actions.client">
+            <field name="name">图表生成器</field>
+            <field name="tag">echart_builder.echart_snippets_tag</field>
+        </record>
+    </data>
+</odoo>

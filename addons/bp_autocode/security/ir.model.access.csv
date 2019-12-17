@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bp_autocode_module,bp_autocode.module,model_bp_autocode_module,,1,1,1,1
+access_bp_autocode_module_rely_module,bp_autocode.module.rely.module,model_bp_autocode_module_rely_module,,1,1,1,1
+access_bp_autocode_addel_field,bp_autocode.addel.field,model_bp_autocode_addel_field,,1,1,1,1
+access_bp_autocode_inherit_field,bp_autocode.inherit.field,model_bp_autocode_inherit_field,,1,1,1,1
+access_bp_autocode_model,bp_autocode.model,model_bp_autocode_model,,1,1,1,1
+access_bp_autocode_field,bp_autocode.field,model_bp_autocode_field,,1,1,1,1
+access_bp_autocode_model_fieldline,bp_autocode.model.fieldline,model_bp_autocode_model_fieldline,,1,1,1,1
+access_bp_autocode_model_filter,bp_autocode.model.filter,model_bp_autocode_model_filter,,1,1,1,1
+access_bp_autocode_model_button,bp_autocode.model.button,model_bp_autocode_model_button,,1,1,1,1
+access_bp_autocode_model_relatedbox,bp_autocode.model.relatedbox,model_bp_autocode_model_relatedbox,,1,1,1,1
+access_bp_autocode_model_progressbar,bp_autocode.model.progressbar,model_bp_autocode_model_progressbar,,1,1,1,1

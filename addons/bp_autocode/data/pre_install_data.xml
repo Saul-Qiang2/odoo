@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- 字段表增加默认数据 add by duq -->
+        <record model="bp_autocode.field" id="auto_code_model_line_00">
+            <field name="field_c_name">Group</field>
+            <field name="field_e_name">group</field>
+            <field name="field_type">group</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_01">
+            <field name="field_c_name">GroupEnd</field>
+            <field name="field_e_name">groupend</field>
+            <field name="field_type">groupend</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_02">
+            <field name="field_c_name">Page</field>
+            <field name="field_e_name">page</field>
+            <field name="field_type">page</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_03">
+            <field name="field_c_name">PageEnd</field>
+            <field name="field_e_name">pageend</field>
+            <field name="field_type">pageend</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_04">
+            <field name="field_c_name">Tree</field>
+            <field name="field_e_name">tree</field>
+            <field name="field_type">tree</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_05">
+            <field name="field_c_name">TreeEnd</field>
+            <field name="field_e_name">treeend</field>
+            <field name="field_type">treeend</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_06">
+            <field name="field_c_name">NoteBook</field>
+            <field name="field_e_name">notebook</field>
+            <field name="field_type">notebook</field>
+        </record>
+        <record model="bp_autocode.field" id="auto_code_model_line_07">
+            <field name="field_c_name">NoteBookEnd</field>
+            <field name="field_e_name">notebookend</field>
+            <field name="field_type">notebookend</field>
+        </record>
+
+        <!-- 依赖模块表增加默认数据 add by duq -->
+        <!--<record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_00">-->
+            <!--<field name="rely_module_cname">基础</field>-->
+            <!--<field name="rely_module_ename">base</field>-->
+        <!--</record>-->
+        <!--<record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_01">-->
+            <!--<field name="rely_module_cname">邮箱</field>-->
+            <!--<field name="rely_module_ename">mail</field>-->
+        <!--</record>-->
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_02">
+            <field name="rely_module_cname">销售</field>
+            <field name="rely_module_ename">sale</field>
+        </record>
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_03">
+            <field name="rely_module_cname">产品</field>
+            <field name="rely_module_ename">product</field>
+        </record>
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_04">
+            <field name="rely_module_cname">车辆</field>
+            <field name="rely_module_ename">fleet</field>
+        </record>
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_05">
+            <field name="rely_module_cname">财务</field>
+            <field name="rely_module_ename">account</field>
+        </record>
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_06">
+            <field name="rely_module_cname">Web</field>
+            <field name="rely_module_ename">web</field>
+        </record>
+        <record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_07">
+            <field name="rely_module_cname">网站</field>
+            <field name="rely_module_ename">website</field>
+        </record>
+        <!--<record model="bp_autocode.module.rely.module" id="auto_code_module_rely_module_08">-->
+            <!--<field name="rely_module_cname">上传文件插件</field>-->
+            <!--<field name="rely_module_ename">dris_upload</field>-->
+        <!--</record>-->
+    </data>
+</odoo>

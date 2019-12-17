@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="bugs_template" name="bugs">
+        <div class="container">
+            <h1>未关闭bug</h1>
+            <!--t-foreach表示遍历由http.request.render()传过来的字段-->
+            <t t-foreach='bugs_open' t-as="bug">
+                <div class="row">
+                    <!--展示字典中一条记录的某个字段-->
+                    <span t-field="bug.name"/>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

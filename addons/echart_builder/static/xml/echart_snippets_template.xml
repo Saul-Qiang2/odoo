@@ -1,0 +1,12 @@
+<templates>
+    <t t-name="echart_snippets_template">
+
+
+
+
+        <div class="background_color1">
+            <div class="block" id="chart1"></div>
+        </div>
+
+    </t>
+</templates>

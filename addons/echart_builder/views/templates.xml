@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <template id="index" name="rchart builder">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <section class="pt32 pb32 bg-secondary oe_custom_bg">
+                        <div class="container text-center">
+                          <h1> Editable text and supports drag and drop.</h1>
+                        </div>
+                    </section>
+                    <section class="container mt16" contenteditable="False">
+                      This is a non-editable text after the list of books.
+                    </section>
+                </div>
+            </t>
+        </template>
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
+    </data>
+</odoo>

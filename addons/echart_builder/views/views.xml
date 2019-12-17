@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+
+    <!-- Top menu item -->
+
+    <menuitem name="echart_builder" id="echart_builder.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="echart_builder.menu_1" parent="echart_builder.menu_root"/>
+    <!--<menuitem name="Menu 2" id="echart_builder.menu_2" parent="echart_builder.menu_root"/>-->
+
+    <!-- actions -->
+
+    <menuitem name="List" id="echart_builder.menu_1_list" parent="echart_builder.menu_1"
+              action="echart_builder.action_echart_snippets"/>
+    <!--<menuitem name="Server to list" id="echart_builder" parent="echart_builder.menu_2"-->
+              <!--action="echart_builder.action_echart_snippets"/>-->
+
+  </data>
+</odoo>

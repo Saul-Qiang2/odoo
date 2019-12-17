@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 继承视图 -->
+
+        <record id="inherit_form_qingjia2_qingjiadan2" model="ir.ui.view">
+            <field name="name">请假单</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="inherit_id" ref="qingjia.view_form_qingjia_qingjiadan"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='reason']" position="after">
+                     <field name="days" string="请假天数"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

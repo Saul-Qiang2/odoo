@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+      <record id="tree_bp_autocode_field" model="ir.ui.view">
+          <field name="name">字段列表</field>
+          <field name="type">tree</field>
+          <field name="model">bp_autocode.field</field>
+
+          <field name="arch" type="xml">
+            <tree>
+              <field name="field_c_name"/>
+              <field name="field_e_name"/>
+              <field name="field_type"/>
+              <field name="field_related_model"/>
+              <field name="field_one_2_many"/>
+              <field name="field_selection"/>
+            </tree>
+          </field>
+      </record>
+
+      <record id="form_bp_autocode_field" model="ir.ui.view">
+          <field name="name">字段</field>
+          <field name="type">form</field>
+          <field name="model">bp_autocode.field</field>
+
+          <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <group name="group_top" string="模块详情页">
+                  <field name="field_c_name"/>
+                  <field name="field_e_name"/>
+                  <field name="field_type"/>
+                  <field name="field_related_model" attrs = "{'invisible': [('field_type', 'in', ('Char', 'Integer', 'Float', 'Selection', 'Boolean', 'Serialized', 'Date', 'Datetime', 'Text', 'Monetary', 'Reference', 'Binary', 'Html', 'group', 'groupend', 'notebook', 'notebookend', 'page', 'pageend', 'tree', 'treeend'))], 'required': [('field_type', 'in', ('One2many', 'Many2many', 'Many2one'))]}"/>
+                  <field name="field_selection" attrs = "{'invisible': [('field_type', '!=', 'Selection')]}" placeholder="[(), (), ()]" />
+                  <field name="field_one_2_many" attrs = "{'invisible': [('field_type', '!=', 'One2many')], 'required': [('field_type', '=', 'One2many')]}"  />
+
+                </group>
+              </sheet>
+            </form>
+          </field>
+      </record>
+
+      <record id="action_bp_autocode_field" model="ir.actions.act_window">
+          <field name="name">字段</field>
+          <field name="res_model">bp_autocode.field</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form,tree</field>
+          <field name="view_id" ref="tree_bp_autocode_field"/>
+      </record>
+
+      <menuitem name="代码生成器" id="menu_bp_autocode_root" web_icon="static/description/icon.png"/>
+      <menuitem name="字段" id="menu_bp_autocode_field" parent="menu_bp_autocode_root" sequence="5" action="action_bp_autocode_field"/>
+
+  </data>
+</odoo>

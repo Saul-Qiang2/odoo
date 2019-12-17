@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_supplier_root" name="供应商"/>
+
+    <menuitem id="supplier_index_menu11" name="供应商仪表盘" parent="menu_supplier_root" action="supplier_index_action"/>
+
+</odoo>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 定义form表单视图 -->
+     <record id="QingJiaDan_form" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.form</field>
+        <field name="type">form</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button class='oe_highlight' type="object" string="提交" name="do_confirm" attrs="{}" />
+                    <button class='oe_highlight' type="object" string="审批" name="do_complete" attrs="{}" />
+                    <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,complete" />
+                </header>
+
+                <sheet>
+                   <div class="oe_button_box" name="button_box">
+                            <button name="do_confirm"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                                class="oe_stat_button"
+                                help="提交">
+                                <field name="state"  widget="statinfo" string="提交"/>
+                            </button>
+                            <button name="do_complete"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                                class="oe_stat_button"
+                                help="审批">
+                                <field name="state"  widget="statinfo" string="审批"/>
+                            </button>
+                   </div>
+                                           <group>
+                        <field name="name" />
+                        <field name="days" />
+                        <field name="starttime" />
+                        <field name="reason" />
+                     </group>
+
+                                                        </sheet>
+
+            <!-- 备注信息轨迹显示 begin-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            <!-- 备注信息轨迹显示 end-->
+
+            </form>
+        </field>
+     </record>
+
+     <!-- 定义tree列表视图 -->
+    <record id="QingJiaDan_tree" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.tree</field>
+        <field name="type">tree</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="姓名"/>
+                <field name="days" string="请假天数"/>
+                <field name="starttime" string="开始日期"/>
+                <field name="reason" string="请假事由"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- 定义筛选器视图 -->
+    <record id="QingJiaDan_search_view" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.search</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <!-- 定义分组器 -->
+                <group expand="0" string="Group By">
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- 定义看板视图-->
+    <record id="QingJiaDan_kanban_view" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.kanban</field>
+        <field name="type">kanban</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" string="姓名"/>
+                <field name="days" string="请假天数"/>
+                <field name="starttime" string="开始日期"/>
+                <field name="reason" string="请假事由"/>
+               <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="row">
+                                <div class="col-xs-6 pull-right text-right">
+                                    <strong><span>
+                                        <t>
+
+                                            <t t-esc="record.name.value"/>
+                                        </t>
+                                    </span></strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 pull-right text-right">
+                                    <strong><span>
+                                        <t>
+
+                                            <t t-esc="record.days.value"/>
+                                        </t>
+                                    </span></strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 pull-right text-right">
+                                    <strong><span>
+                                        <t>
+
+                                            <t t-esc="record.starttime.value"/>
+                                        </t>
+                                    </span></strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 pull-right text-right">
+                                    <strong><span>
+                                        <t>
+
+                                            <t t-esc="record.reason.value"/>
+                                        </t>
+                                    </span></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+               </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- 定义日历视图-->
+    <!--<record id="QingJiaDan_calendar_view" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.calendar</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <calendar string="qingjia2.qingjiadan" color="" date_start="">
+                <field name="name" />
+                <field name="days" />
+                <field name="starttime" />
+                <field name="reason" />
+            </calendar>
+        </field>
+    </record>-->
+
+    <!-- 定义柱状折线饼状图形视图-->
+    <record id="QingJiaDan_graph_view" model="ir.ui.view">
+        <field name="name">qingjia2.qingjiadan.graph</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <graph string="qingjia2.qingjiadan">
+                <field name="name" type="measure"/>
+                <field name="days" type="measure"/>
+                <field name="starttime" type="measure"/>
+                <field name="reason" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- 定义透视表视图-->
+    <record id="QingJiaDan_pivot_view" model="ir.ui.view" >
+        <field name="name">qingjia2.qingjiadan.pivot</field>
+        <field name="model">qingjia2.qingjiadan</field>
+        <field name="arch" type="xml">
+            <pivot string="qingjia2.qingjiadan" display_quantity="true">
+                <field name="name" type="measure"/>
+                <field name="days" type="measure"/>
+                <field name="starttime" type="measure"/>
+                <field name="reason" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+   <!-- 定义视图动作 -->
+     <record id="QingJiaDan_action" model="ir.actions.act_window">
+        <field name="name">请假单</field>
+        <field name="res_model">qingjia2.qingjiadan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,kanban,graph,pivot</field>
+         <field name="view_id" ref="QingJiaDan_tree"/>
+    </record>
+    <!-- 触发tree视图动作 -->
+    <record model="ir.actions.act_window.view" id="QingJiaDan_tree_action">
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="QingJiaDan_tree"/>
+            <field name="sequence">1</field>
+            <field name="act_window_id" ref="QingJiaDan_action"/>
+    </record>
+    <!-- 触发form视图动作 -->
+    <record model="ir.actions.act_window.view" id="QingJiaDan_form_action">
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="QingJiaDan_form"/>
+            <field name="sequence">2</field>
+            <field name="act_window_id" ref="QingJiaDan_action"/>
+    </record>
+
+    <!-- 定义菜单-->
+    <!-- <menuitem id="QingJiaDan" name="qingjia2.qingjiadan" /> -->
+    <menuitem id="menu_top" name="请假单" />
+    <menuitem id="QingJiaDan_menu_field"   name="请假单" parent="menu_top" sequence="14" action="QingJiaDan_action"/>
+</odoo>

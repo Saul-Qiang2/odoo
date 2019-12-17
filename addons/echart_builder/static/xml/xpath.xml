@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_echart_snippets_backend" name="" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/echart_builder/static/js/echarts.min.js"/>
+            <script type="text/javascript" src="/echart_builder/static/js/echart_snippets.js"/>
+            <link rel="stylesheet" type="text/css" href="/echart_builder/static/css/sup2Index.css"/>
+        </xpath>
+    </template>
+</odoo>
