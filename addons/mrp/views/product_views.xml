@@ -77,15 +77,19 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="groups_id" eval="[(4, ref('mrp.group_mrp_user'))]"/>
             <field name="arch" type="xml">
+                <!--添加按钮框-->
                 <button name="toggle_active" position="before">
+                    <!--“物料清单”，ProductTemplate模型类-->
                     <button class="oe_stat_button" name="%(template_open_bom)d" type="action"
                         attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}" icon="fa-flask">
                         <field string="Bill of Materials" name="bom_count" widget="statinfo" />
                     </button>
+                    <!--“用于”，ProductTemplate模型类-->
                     <button class="oe_stat_button" name="action_used_in_bom" type="object"
                         attrs="{'invisible':['|',('type', 'not in', ['product', 'consu']), ('used_in_bom_count', '=', 0)]}" icon="fa-level-up">
                         <field string="Used In" name="used_in_bom_count" widget="statinfo" />
                     </button>
+                    <!--"制造"，ProductTemplate模型类-->
                     <button class="oe_stat_button" name="action_view_mos" type="object"
                         attrs="{'invisible': [('type', 'not in', ['product', 'consu'])]}" icon="fa-list-alt" help="Manufactured in the last 365 days">
                         <div class="o_field_widget o_stat_info">

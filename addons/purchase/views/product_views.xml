@@ -8,24 +8,30 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
+                <!--设置显示状态-->
                 <xpath expr="//page[@name='purchase']" position="attributes">
                     <attribute name="invisible">0</attribute>
                 </xpath>
                 <group name="purchase" position="before">
+                    <!--产品变体数量大于1隐藏-->
                     <group string="Vendors" name="vendors" attrs="{'invisible': [('product_variant_count','&gt;',1)]}">
                         <field name="seller_ids" context="{'default_product_tmpl_id':context.get('product_tmpl_id',active_id), 'product_template_invisible_variant': True}" nolabel="1"/>
                     </group>
+                    <!--产品变体数量小于等于1隐藏-->
                     <group string="Vendors" name="variant_vendors" attrs="{'invisible': [('product_variant_count','&lt;=',1)]}">
                         <field name="variant_seller_ids" context="{'default_product_tmpl_id': context.get('product_tmpl_id', active_id)}" nolabel="1"/>
                     </group>
                 </group>
+                <!--给供应商账单添加属性-->
                 <group name="bill" position="attributes">
                     <attribute name="groups">purchase.group_purchase_manager</attribute>
                 </group>
+                <!--给供应商账单添加字段-->
                 <group name="bill" position="inside">
                     <field name="purchase_method" widget="radio"/>
                 </group>
                 <page name="purchase" position="inside">
+                    <!--供应商说明-->
                     <group string="Description for Vendors">
                        <field name="description_purchase" nolabel="1"
                             placeholder="This note will show up on purchase orders."/>
@@ -71,7 +77,9 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="groups_id" eval="[(4, ref('purchase.group_purchase_user'))]"/>
             <field name="arch" type="xml">
+                <!--在右上方的“有效”按钮框前面添加按钮框-->
                 <button name="toggle_active" position="before">
+                    <!--"已采购"，ProductTemplate模型类-->
                     <button class="oe_stat_button" name="action_view_po"
                         type="object" icon="fa-shopping-cart" attrs="{'invisible': [('purchase_ok', '=', False)]}" help="Purchased in the last 365 days">
                         <div class="o_field_widget o_stat_info">

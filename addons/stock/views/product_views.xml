@@ -268,6 +268,7 @@
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
                 <data>
+                    <!--在头部添加按钮"更新手上数量"和"补给"-->
                     <header position="inside" >
                         <button name="action_update_quantity_on_hand" string="Update Qty On Hand" type="object" attrs="{'invisible': [('type', '!=', 'product')]}"/>
                         <button string="Replenish" type="action"
@@ -276,7 +277,9 @@
                             groups="stock.group_stock_user"
                             attrs="{'invisible': [('type', '!=', 'product')]}"/>
                     </header>
+                    <!--添加按钮框:在"有效"按钮框前-->
                     <button name="toggle_active" position="before">
+                        <!--"在手"，ProductTemplate模型类-->
                         <button type="object"
                             name="action_open_quants"
                             attrs="{'invisible':[('type', '!=', 'product')]}"
@@ -289,6 +292,7 @@
                                 <span class="o_stat_text">On Hand</span>
                             </div>
                         </button>
+                        <!--"预测"，ProductTemplate模型类-->
                         <button type="action"
                             name="%(stock.action_stock_level_forecast_report_template)d"
                             attrs="{'invisible':[('type', '!=', 'product')]}"
@@ -304,11 +308,14 @@
                                 <span class="o_stat_text">Forecasted</span>
                             </div>
                         </button>
+                        <!--"产品移动"，ProductTemplate模型类-->
                         <button string="Product Moves" type="object"
                             name= "action_view_stock_move_lines"
                             attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}"
                             class="oe_stat_button" icon="fa-arrows-v"
                             groups="stock.group_stock_user"/>
+                        <!--"订货规则"，ProductTemplate模型类-->
+                        <!---->
                         <button type="object"
                             name="action_view_orderpoints"
                             attrs="{'invisible':['|',('type', '!=', 'product'),('nbr_reordering_rules', '==', 1)]}"
@@ -316,6 +323,7 @@
                             icon="fa-refresh">
                             <field name="nbr_reordering_rules" widget="statinfo"/>
                          </button>
+                        <!---->
                         <button type="object"
                             name="action_view_orderpoints"
                             attrs="{'invisible':['|',('type', '!=', 'product'),('nbr_reordering_rules', '!=', 1)]}"
@@ -329,12 +337,15 @@
                                 <span class="o_stat_value"><field name="reordering_max_qty"/></span>
                             </div>
                         </button>
+                        <!--"路线"，ProductTemplate模型类-->
                         <button string="Routes" type="action"
                             name="%(action_stock_rules_report)d"
                             attrs="{'invisible':[('type', '!=', 'product')]}"
                             class="oe_stat_button" icon="fa-cogs"
                             context="{'default_product_tmpl_id': id}"
                             groups="stock.group_stock_multi_locations"/>
+                        <!--"批次/序列号"，ProductTemplate模型类-->
+                        <!--显示条件:在"库存"选项卡中,追踪那里设置不为无-->
                         <button string="Lot/Serial Number" type="object"
                             name="action_open_product_lot"
                             attrs="{'invisible': [('tracking', '=', 'none')]}"
@@ -343,10 +354,11 @@
 
                     <!-- change attrs of fields added in view_template_property_form
                     to restrict the display for templates -->
+                    <!--更改字段的属性以限制模板的显示-->
                     <xpath expr="//group[@name='group_lots_and_weight']" position="attributes">
                         <attribute name="attrs">{'invisible':['|', ('type', 'not in', ['product', 'consu']), ('product_variant_count', '&gt;', 1)]}</attribute>
                     </xpath>
-
+                    <!--添加负责人字段-->
                     <xpath expr="//group[@name='group_lots_and_weight']" position="inside">
                         <field name="responsible_id"/>
                     </xpath>

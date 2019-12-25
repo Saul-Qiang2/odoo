@@ -24,8 +24,11 @@
         'views/inh_view.xml',
       % endif
     ],
-    'auto_install': True,
+    # 自动安装：当依赖（depends）安装完毕后，自动安装本模块，这里设置为否
+    'auto_install': False,
+    # 是否可安装：设置为false，从前端搜索不到本模块
     'installable': True,
+    # 是否是应用类型：true：可以在筛选器中用“应用”进行筛选
     'application': True,
 }
 
